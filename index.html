@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculator</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script>
+    $(function() {
+      $('#op').on('change', function() {
+        $('input[type=submit]').val($('#op option:selected').val());
+      });
+      $('form').on('submit', function(e) {
+        e.preventDefault();
+        var num1 = +$('#num1').val(),
+            num2 = +$('#num2').val(),
+            op = $('#op option:selected').val(),
+            answer;
+
+        if (op === "add") { answer = num1 + num2; }
+        if (op === "sub") { answer = num1 - num2; }
+        if (op === "multiply") { answer = num1 * num2; }
+        if (op === "divide") { answer = num1 / num2; }
+
+        $('#answer').text(answer)
+      });
+
+      $()
+    });    
+  </script>
+  <style>
+    input {
+      display: inline-block;
+      border: 1px solid #ccc;
+      height: 25px;
+      width: 100px;
+    }
+
+    select {
+      display: inline-block;
+      margin: 0 20px 0 20px;
+      font-size: 18px;
+    }
+
+    input[type="submit"] {
+      margin-left: 20px;
+      width: 50px;
+      height: 30px;
+    }
+
+    h2 {
+      margin-left: 20px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <h1>Arithmetic Calculator</h1>
+  <form action="" method="get">
+    <input type="number" id="num1">
+    <select name="operation" id="op" >
+      <option value="add">+</option>
+      <option value="sub">-</option>
+      <option value="multiply">x</option>
+      <option value="divide">/</option>
+    </select>
+    <input type="number" id="num2">
+    <input type="submit" value="=">
+    <h2 id="answer"></h2>
+  </form>
+</body>
+</html>
